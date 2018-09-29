@@ -1,0 +1,107 @@
+#include <stdio.h>
+#define LEN_A 10
+
+void printarray(int[], int);
+double average(int[], int);
+int less_than_average(int[], int);
+void reverse(int[], int);
+int secondLargest(int [], int);
+void rotate_right(int[], int, int);
+void insert(int [], int, int, int);
+
+int main(int argc, char ** argv){
+	int A[]= {9, 21, 321, 117, 27, 64, 13, 9, 12, 208};
+ 	int B[LEN_A+1];
+	int newValue=505;
+	printf("A[] is:\n");	
+	insert(A, 2, 2, LEN_A);
+	for(int i = 0; i < LEN_A + 1; i++){
+	printf("%d,", A[i]); 	
+	}
+	return 0;
+}
+
+void printarray(int A[], int length){
+	printf("(");
+	for (int i = 0; i < length - 1; i++){
+		printf("%d,", A[i]);}
+	printf("%d", A[length - 1]);
+	printf(")");
+
+}
+
+double average(int A[], int length){
+	double sum = 0.0;
+	double average = 0.0;
+	if(length > 0){
+	for(int i = 0; i < length; i++){
+		sum += A[i];}
+	average = sum/length;
+	return average;}
+
+	return 1.0;}
+
+int less_than_average(int A[], int length){
+	int avg = average(A, length);
+	int count = 0;
+	if(length > 0){
+	for(int i = 0; i < length; i++){
+		if(A[i] < avg){
+			count++;
+		}
+	}
+	return count;}
+	return 0;}
+
+void reverse(int A[], int length){
+	int temp = 0;
+	for(int i = 0; i < length/2; i++){
+		temp = A[i];
+		A[i] = A[length - i - 1];
+		A[length - i - 1] = temp;
+				
+	}
+	
+}
+
+int secondLargest( int A[], int length){
+	int Largest = 0;
+	int secondLargest = 0;  
+	for (int i = 0; i < length; i++){
+		if(A[i] > Largest){
+			secondLargest = Largest;
+			Largest = A[i];
+	
+		}
+		else{
+			secondLargest = A[i];	
+		}
+	}
+	return secondLargest;
+		
+}
+
+void rotate_right(int A[], int length, int numPlaces){
+	int count = 0;
+        while(count < numPlaces){
+		int temp = A[length - 1];
+		for (int i = length - 1; i > 0; i--){
+            		
+			A[i] = A[i - 1];
+    				}
+		A[0] = temp;	
+		count++;}
+}
+
+void insert(int A[], int n, int index, int length){
+	int l = length + 1;
+	int B[l];
+	for(int i = 0; i < length; i++){
+		B[i] = A[i];}
+	
+	for(int j = l; j > index; j--){
+		
+		B[j] = B[j - 1];
+	}
+	B[index] = n;
+}
